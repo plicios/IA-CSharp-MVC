@@ -1,0 +1,6 @@
+
+*.user
+
+\.vs/IA-lab6/v15/\.suo
+
+\.vs/IA-lab6/v15/Server/sqlite3/db\.lock
