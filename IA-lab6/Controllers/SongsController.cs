@@ -20,21 +20,6 @@ namespace IA_lab6.Controllers
             return View(db.Songs.ToList());
         }
 
-        // GET: Songs/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Song song = db.Songs.Find(id);
-            if (song == null)
-            {
-                return HttpNotFound();
-            }
-            return View(song);
-        }
-
         // GET: Songs/Create
         public ActionResult Create()
         {
@@ -89,25 +74,10 @@ namespace IA_lab6.Controllers
             return View(song);
         }
 
-        // GET: Songs/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Song song = db.Songs.Find(id);
-            if (song == null)
-            {
-                return HttpNotFound();
-            }
-            return View(song);
-        }
-
         // POST: Songs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpDelete, ActionName("Delete")]
+        
+        public ActionResult Delete(int id)
         {
             Song song = db.Songs.Find(id);
             db.Songs.Remove(song);
