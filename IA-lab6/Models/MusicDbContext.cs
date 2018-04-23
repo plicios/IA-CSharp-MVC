@@ -6,5 +6,7 @@ namespace IA_lab6.Models
     {
         public MusicDbContext(): base("DefaultConnection") { }
         public DbSet<Song> Songs { get; set; }
+
+        public DbSet<Genre> Genres { get; set; }
     }
 }
