@@ -55,7 +55,7 @@ namespace IA_lab6.Controllers
             ViewBag.Genres = db.Genres.ToList();
             if (ModelState.IsValid)
             {
-                AddSongToGenre(song);
+                //AddSongToGenre(song);
 
                 db.Songs.Add(song);
                 db.SaveChanges();
@@ -94,9 +94,9 @@ namespace IA_lab6.Controllers
             if (ModelState.IsValid)
             {
                 Song removeSong = db.Songs.Find(song.Id);
-                RemoveSongFromGenre(removeSong);
+                //RemoveSongFromGenre(removeSong);
 
-                AddSongToGenre(song);
+                //AddSongToGenre(song);
 
                 db.Entry(song).State = EntityState.Modified;
                 db.SaveChanges();
@@ -111,7 +111,7 @@ namespace IA_lab6.Controllers
         {
             Song song = db.Songs.Find(id);
 
-            RemoveSongFromGenre(song);
+            //RemoveSongFromGenre(song);
 
             db.Songs.Remove(song);
             db.SaveChanges();
@@ -127,29 +127,29 @@ namespace IA_lab6.Controllers
             base.Dispose(disposing);
         }
 
-        private void AddSongToGenre(Song song)
-        {
-            Genre thisSongGenre = db.Genres.FirstOrDefault(genre => genre.Id == song.GenreId);
-            if (thisSongGenre != null)
-            {
-                if (thisSongGenre.Songs != null)
-                {
-                    thisSongGenre.Songs.Add(song);
-                }
-                else
-                {
-                    thisSongGenre.Songs = new List<Song>() { song };
-                }
-            }
-        }
+        //private void AddSongToGenre(Song song)
+        //{
+        //    Genre thisSongGenre = db.Genres.FirstOrDefault(genre => genre.Id == song.GenreId);
+        //    if (thisSongGenre != null)
+        //    {
+        //        if (thisSongGenre.Songs != null)
+        //        {
+        //            thisSongGenre.Songs.Add(song);
+        //        }
+        //        else
+        //        {
+        //            thisSongGenre.Songs = new List<Song>() { song };
+        //        }
+        //    }
+        //}
 
-        private void RemoveSongFromGenre(Song song)
-        {
-            Genre thisSongGenre = db.Genres.FirstOrDefault(genre => genre.Id == song.GenreId);
-            if(thisSongGenre?.Songs?.Contains(song) ?? false)
-            {
-                thisSongGenre.Songs.Remove(song);
-            }
-        }
+        //private void RemoveSongFromGenre(Song song)
+        //{
+        //    Genre thisSongGenre = db.Genres.FirstOrDefault(genre => genre.Id == song.GenreId);
+        //    if(thisSongGenre?.Songs?.Contains(song) ?? false)
+        //    {
+        //        thisSongGenre.Songs.Remove(song);
+        //    }
+        //}
     }
 }

@@ -38,6 +38,7 @@ namespace IA_lab6.Controllers
             {
                 return HttpNotFound();
             }
+            genre.Songs = db.Songs.Where(song => song.GenreId == id).ToList();
             return View(genre);
         }
 

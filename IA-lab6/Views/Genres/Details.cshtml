@@ -23,7 +23,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Songs)
+            @{ string text = "";
+                for (int i = 0; i < Model.Songs.Count; i++) {
+                    text += Model.Songs.ToList()[i].Name + (i != Model.Songs.Count - 1 ? ", " : "");
+                }
+            }
+            @text
         </dd>
     </dl>
 </div>
